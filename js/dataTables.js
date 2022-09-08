@@ -79,7 +79,7 @@ var tabledata = [
 
 //create Tabulator on DOM element with id "example-table"
 var table = new Tabulator("#example-table", {
-    height:205, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+    height:120, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
     data:tabledata, //assign data to table
     layout:"fitColumns", //fit columns to width of table (optional)
     columns:[ //Define Table Columns
