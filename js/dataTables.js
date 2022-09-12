@@ -35,16 +35,16 @@ function createTableBody(data, thead) {
         data.forEach((el, index) => {
             let tr = document.createElement('tr');
             tbody.append(tr);
+            
+            let numberOfElement = document.createElement('td');
+            numberOfElement.innerText = index + 1;
+            tr.append(numberOfElement);
+
             for (let value in el) {
-                if (value === 'id') {
-                    let elementOfTbody = document.createElement('td');
-                    elementOfTbody.innerText = index + 1;
-                    tr.append(elementOfTbody);
-                } else {
-                    let elementOfTbody = document.createElement('td');
-                    elementOfTbody.innerText = el[value];
-                    tr.append(elementOfTbody);
-                }
+                if (value === 'id') continue
+                let elementOfTbody = document.createElement('td');
+                elementOfTbody.innerText = el[value];
+                tr.append(elementOfTbody);
             }
         });
     }
@@ -71,24 +71,24 @@ DataTable(config1, users);
 
 //define some sample data
 var tabledata = [
-    {id:1, name:"Вася", surname: 'Петров', age:"12"},
-    {id:2, name:"Вася", surname: 'Васечкин', age:"15"},
-    {id:3, name:"Петя", surname: 'Васечкин', age:"13"},
-    {id:3, name:"Вадим", surname: 'Васечкин', age:"10"},
+    { id: 1, name: "Вася", surname: 'Петров', age: "12" },
+    { id: 2, name: "Вася", surname: 'Васечкин', age: "15" },
+    { id: 3, name: "Петя", surname: 'Васечкин', age: "13" },
+    { id: 3, name: "Вадим", surname: 'Васечкин', age: "10" },
 ];
 
 //create Tabulator on DOM element with id "example-table"
 var table = new Tabulator("#example-table", {
-    height:120, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
-    data:tabledata, //assign data to table
-    layout:"fitColumns", //fit columns to width of table (optional)
-    columns:[ //Define Table Columns
-        {title:"Имя", field:"name", width:150},
-        {title:"Фамилия", field:"surname",},
-        {title:"Возраст", field:"age"},
+    height: 120, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+    data: tabledata, //assign data to table
+    layout: "fitColumns", //fit columns to width of table (optional)
+    columns: [ //Define Table Columns
+        { title: "Имя", field: "name", width: 150 },
+        { title: "Фамилия", field: "surname", },
+        { title: "Возраст", field: "age" },
     ],
 });
 
 table.on("tableBuilt", () => {
     table.setPage(1);
-  });
+});
